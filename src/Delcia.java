@@ -1,4 +1,4 @@
-public class Liczenie
+public class Delcia
 {
 
 
@@ -32,11 +32,13 @@ public class Liczenie
     double d1;
     double d2;
     public boolean x1s(){
-        return d1 < x1 & x1 < d2;
+        return d1 <= x1 & x1 <= d2;
     }
     public boolean x2s(){
-        return d1 < x2 & x2 < d2;
+        return d1 <= x2 & x2 <= d2;
     }
+
+
 
 
 

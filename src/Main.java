@@ -4,58 +4,82 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Liczenie liczenie = new Liczenie();
+
         Scanner scan = new Scanner(System.in);
+        System.out.println("Wybierz co chcesz policzyæ:");
+        System.out.println("1 - równanie kwadratowe");
+        System.out.println("2 - potêgowanie");
+        int pick = scan.nextInt();
+        switch(pick){
+            case 1:
+                Delcia liczenieDelta = new Delcia();
 
-        System.out.println("Podaj podcz¹tek dziedziny");
-        liczenie.d1 = scan.nextDouble();
-        System.out.println("Podaj koniec dziedziny");
-        liczenie.d2 = scan.nextDouble();
+                System.out.println("Podaj podcz¹tek dziedziny");
+                liczenieDelta.d1 = scan.nextDouble();
+                System.out.println("Podaj koniec dziedziny");
+                liczenieDelta.d2 = scan.nextDouble();
 
-        System.out.println("ax2 + bx + c = 0");
+                System.out.println("ax2 + bx + c = 0");
 
-        System.out.println("Podaj wspó³czynnik a");
-        liczenie.a = scan.nextDouble();
-        System.out.println("Podaj wspó³czynnik b");
-        liczenie.b = scan.nextDouble();
-        System.out.println("Podaj wspó³czynnik c");
-        liczenie.c = scan.nextDouble();
+                System.out.println("Podaj wspó³czynnik a");
+                liczenieDelta.a = scan.nextDouble();
+                System.out.println("Podaj wspó³czynnik b");
+                liczenieDelta.b = scan.nextDouble();
+                System.out.println("Podaj wspó³czynnik c");
+                liczenieDelta.c = scan.nextDouble();
 
-        liczenie.liczDelta();
-        liczenie.liczPierwiastek();
-        liczenie.liczX1();
-        liczenie.liczX2();
+                liczenieDelta.liczDelta();
+                liczenieDelta.liczPierwiastek();
+                liczenieDelta.liczX1();
+                liczenieDelta.liczX2();
 
-        System.out.println("Delta = b*b - 4ac = " + liczenie.delta);
-        System.out.println("D: {"+ liczenie.d1 +" ; "+ liczenie.d2+"}");
+                System.out.println("Delta = b*b - 4ac = " + liczenieDelta.delta);
+                System.out.println("D: {" + liczenieDelta.d1 + " ; " + liczenieDelta.d2 + "}");
 
-        if(liczenie.x1s()){
+                if (liczenieDelta.x1s()) {
 
-            System.out.println("x1 = -b + pierwiastek delty / 2a " + liczenie.x1);
+                    System.out.println("x1 = -b + pierwiastek delty / 2a " + liczenieDelta.x1);
 
-        }else {
-            System.out.println("x1 = -b + pierwiastek delty / 2a " + liczenie.x1 + "(sprzecznoœæ)");
+                } else {
+                    System.out.println("x1 = -b + pierwiastek delty / 2a " + liczenieDelta.x1 + "(sprzecznoœæ)");
+                }
+
+                if (liczenieDelta.x2s()) {
+                    System.out.println("x2 = -b - pierwiastek delty / 2a " + liczenieDelta.x2);
+                } else {
+                    System.out.println("x2 = -b - pierwiastek delty / 2a " + liczenieDelta.x2 + "(sprzecznoœæ)");
+                }
+
+                if (liczenieDelta.x1s() & liczenieDelta.x2s()) {
+                    System.out.println("xe {" + liczenieDelta.x1 + " ; " + liczenieDelta.x2 + "}");
+                } else if (liczenieDelta.x1s() & !liczenieDelta.x2s()) {
+                    System.out.println("xe {" + liczenieDelta.x1 + "}");
+                } else if (!liczenieDelta.x1s() & liczenieDelta.x2s()) {
+                    System.out.println("xe {" + liczenieDelta.x2 + "}");
+                } else {
+                    System.out.println("x jest puste");
+                }break;
+
+            case 2:
+                Potêgi potegi = new Potêgi();
+
+
+                System.out.println("Podaj postawê potêgi");
+                potegi.a = scan.nextDouble();
+                System.out.println("Podaj wyk³adnik potêgi");
+                potegi.b = scan.nextDouble();
+
+                System.out.println(potegi.a + " do potêgi "+ potegi.b +" = "+ potegi.Liczpotege());
+
+                break;
+
+
+
+
+            default:
+                System.out.println("1 lub 2 debilu, a nie jakieœ " + pick);
+
         }
-
-        if(liczenie.x2s()){
-            System.out.println("x2 = -b - pierwiastek delty / 2a " + liczenie.x2);
-        }else{
-            System.out.println("x2 = -b - pierwiastek delty / 2a " + liczenie.x2 + "(sprzecznoœæ)");
-        }
-
-        if(liczenie.x1s() & liczenie.x2s()){
-            System.out.println("xe {"+liczenie.x1+" ; "+liczenie.x2+"}");
-        }
-        else if(liczenie.x1s() & !liczenie.x2s()){
-            System.out.println("xe {"+liczenie.x1+"}");
-        }
-        else if(!liczenie.x1s() & liczenie.x2s()){
-            System.out.println("xe {"+liczenie.x2+"}");
-        }
-        else {
-            System.out.println("x jest puste");
-        }
-
     }
-
 }
+
